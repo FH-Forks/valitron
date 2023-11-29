@@ -612,7 +612,7 @@ class Validator
      */
     protected function validateAscii($field, $value)
     {
-        if(!is_string($value)) {
+        if (!is_string($value)) {
             return false;
         }
         // multibyte extension needed
@@ -704,7 +704,7 @@ class Validator
      */
     protected function validateAlpha($field, $value)
     {
-        if(!is_string($value)) {
+        if (!is_string($value)) {
             return false;
         }
         return preg_match('/^([a-z])+$/i', $value);
@@ -719,7 +719,7 @@ class Validator
      */
     protected function validateAlphaNum($field, $value)
     {
-        if(!is_string($value)) {
+        if (!is_string($value)) {
             return false;
         }
         return preg_match('/^([a-z0-9])+$/i', $value);
@@ -750,7 +750,7 @@ class Validator
      */
     protected function validateRegex($field, $value, $params)
     {
-        if(!is_scalar($value)) {
+        if (!is_scalar($value)) {
             return false;
         }
         return preg_match($params[0], $value);
@@ -768,7 +768,7 @@ class Validator
         if ($value instanceof \DateTime) {
             $isDate = true;
         } else {
-            if(!is_string($value)) {
+            if (!is_string($value)) {
                 return false;
             }
             $isDate = strtotime($value) !== false;
@@ -787,7 +787,7 @@ class Validator
      */
     protected function validateDateFormat($field, $value, $params)
     {
-        if(!is_string($value)) {
+        if (!is_string($value)) {
             return false;
         }
         $parsed = date_parse_from_format($params[0], $value);
@@ -805,7 +805,7 @@ class Validator
      */
     protected function validateDateBefore($field, $value, $params)
     {
-        if(!is_string($value) && !($value instanceof \DateTime)) {
+        if (!is_string($value) && !($value instanceof \DateTime)) {
             return false;
         }
         $vtime = ($value instanceof \DateTime) ? $value->getTimestamp() : strtotime($value);
@@ -824,7 +824,7 @@ class Validator
      */
     protected function validateDateAfter($field, $value, $params)
     {
-        if(!is_string($value) && !($value instanceof \DateTime)) {
+        if (!is_string($value) && !($value instanceof \DateTime)) {
             return false;
         }
         $vtime = ($value instanceof \DateTime) ? $value->getTimestamp() : strtotime($value);
@@ -856,7 +856,7 @@ class Validator
      */
     protected function validateCreditCard($field, $value, $params)
     {
-        if(!is_string($value)) {
+        if (!is_string($value)) {
             return false;
         }
 
