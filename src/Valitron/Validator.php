@@ -765,7 +765,7 @@ class Validator
      */
     protected function validateDate($field, $value)
     {
-        if ($value instanceof \DateTime) {
+        if ($value instanceof \DateTimeInterface) {
             $isDate = true;
         } else {
             if (!is_string($value)) {
@@ -805,11 +805,11 @@ class Validator
      */
     protected function validateDateBefore($field, $value, $params)
     {
-        if (!is_string($value) && !($value instanceof \DateTime)) {
+        if (!is_string($value) && !($value instanceof \DateTimeInterface)) {
             return false;
         }
-        $vtime = ($value instanceof \DateTime) ? $value->getTimestamp() : strtotime($value);
-        $ptime = ($params[0] instanceof \DateTime) ? $params[0]->getTimestamp() : strtotime($params[0]);
+        $vtime = ($value instanceof \DateTimeInterface) ? $value->getTimestamp() : strtotime($value);
+        $ptime = ($params[0] instanceof \DateTimeInterface) ? $params[0]->getTimestamp() : strtotime($params[0]);
 
         return $vtime < $ptime;
     }
@@ -824,11 +824,11 @@ class Validator
      */
     protected function validateDateAfter($field, $value, $params)
     {
-        if (!is_string($value) && !($value instanceof \DateTime)) {
+        if (!is_string($value) && !($value instanceof \DateTimeInterface)) {
             return false;
         }
-        $vtime = ($value instanceof \DateTime) ? $value->getTimestamp() : strtotime($value);
-        $ptime = ($params[0] instanceof \DateTime) ? $params[0]->getTimestamp() : strtotime($params[0]);
+        $vtime = ($value instanceof \DateTimeInterface) ? $value->getTimestamp() : strtotime($value);
+        $ptime = ($params[0] instanceof \DateTimeInterface) ? $params[0]->getTimestamp() : strtotime($params[0]);
 
         return $vtime > $ptime;
     }
@@ -856,7 +856,7 @@ class Validator
      */
     protected function validateCreditCard($field, $value, $params)
     {
-        if (!is_string($value)) {
+        if (!is_string($value) && !is_int($value)) {
             return false;
         }
 
